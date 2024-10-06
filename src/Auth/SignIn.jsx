@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const SignUpScreen = () => {
-    const [name, setName] = useState('');
+const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
-    const handleSignUp = async () => {
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        console.log(email);
+        console.log(password);
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-
+            await signInWithEmailAndPassword(auth, email, password);
+            
             // Navigate to the Home Screen
             // navigation.navigate('TabNavigation');
 
-            alert('Account created successfully!');
+            alert('Signed in successfully!');
         } catch (error) {
             console.error(error);
         }
@@ -34,16 +36,7 @@ const SignUpScreen = () => {
             <View style={styles.overlay} />
 
             <View style={styles.container}>
-                <Text style={styles.headerText}>Create Account</Text>
-
-                {/* Name Input */}
-                <TextInput
-                    placeholder="Full Name"
-                    placeholderTextColor="#ccc"
-                    style={styles.input}
-                    value={name}
-                    onChangeText={setName}
-                />
+                <Text style={styles.headerText}>Login to Your Account</Text>
 
                 {/* Email Input */}
                 <TextInput
@@ -65,26 +58,16 @@ const SignUpScreen = () => {
                     onChangeText={setPassword}
                 />
 
-                {/* Re-enter Password */}
-                <TextInput
-                    placeholder="Confirm Password"
-                    placeholderTextColor="#ccc"
-                    secureTextEntry
-                    style={styles.input}
-                />
-
                 {/* Sign Up Button */}
-                <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
-                    <Text style={styles.buttonText}>Sign Up</Text>
+                <TouchableOpacity style={styles.signUpButton} onPress={handleSignIn} type="submit">
+                    <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
 
                 {/* Already have an account */}
                 <View style={styles.bottomTextContainer}>
-                    <Text style={styles.bottomText}>Already have an account? </Text>
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('SignIn')}
-                    >
-                        <Text style={styles.bottomLinkText}>Log In</Text>
+                    <Text style={styles.bottomText}>Don't have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('SignUp')} >
+                        <Text style={styles.bottomLinkText}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -154,4 +137,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUpScreen;
+export default SignIn;
