@@ -1,7 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './Screens/Home';
-import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, Feather, MaterialIcons } from '@expo/vector-icons';
 import { Text } from 'react-native';
+import SearchScreen from './Screens/Search';
+import FavouriteScreen from './Screens/Favourite';
+import ProfileScreen from './Screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +22,14 @@ function TabNavigation() {
                     iconName = focused ? "search" : "search";
                     color = focused ? "#FF6347" : "#555";
                     return <Feather name={iconName} size={30} color={color} />;
+                } else if (route.name === "Favourite") {
+                    iconName = focused ? "heart" : "heart";
+                    color = focused ? "#FF6347" : "#555";
+                    return <AntDesign name={iconName} size={size} color={color} />;
+                } else if (route.name === "Account") {
+                    iconName = focused ? "account-circle" : "account-circle";
+                    color = focused ? "#FF6347" : "#555";
+                    return <MaterialIcons name={iconName} size={size} color={color} />;
                 }
             },
             tabBarLabel: ({ focused }) => (
@@ -41,7 +52,9 @@ function TabNavigation() {
         })}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-            <Tab.Screen name="Search" component={HomeScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Favourite" component={FavouriteScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
     );
 }
