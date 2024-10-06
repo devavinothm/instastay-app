@@ -88,7 +88,7 @@ const SliderScreen = () => {
             <View style={styles.buttonContainer}>
                 {activeIndex === data.length - 1 ? (
                     <TouchableOpacity style={styles.signUpButton} 
-                        // onPress={() => navigation.navigate('SignUp')}
+                        onPress={() => navigation.navigate('SignUp')}
                     >
                         <Text style={styles.buttonText}>Sign Up</Text>
                     </TouchableOpacity>
