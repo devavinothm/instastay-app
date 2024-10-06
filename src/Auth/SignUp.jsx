@@ -17,9 +17,9 @@ const SignUpScreen = () => {
             await createUserWithEmailAndPassword(auth, email, password);
 
             // Navigate to the Home Screen
-            // navigation.navigate('TabNavigation');
+            navigation.navigate('TabNavigation');
 
-            alert('Account created successfully!');
+            // alert('Account created successfully!');
         } catch (error) {
             console.error(error);
         }

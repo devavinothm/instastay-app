@@ -94,6 +94,91 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f5f5f5',
+        paddingHorizontal: 20,
+        paddingTop: 50, // For better padding at the top
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    locationContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    locationText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginLeft: 5,
+    },
+    notificationIcon: {
+        padding: 10,
+        borderRadius: 20,
+        backgroundColor: '#e3e3e3',
+        elevation: 3,
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 20,
+    },
+    card: {
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        overflow: 'hidden',
+        marginBottom: 15,
+        elevation: 5, // Increased shadow depth
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.15,
+        shadowRadius: 6,
+    },
+    image: {
+        width: '100%',
+        height: 200,
+    },
+    heartIcon: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        backgroundColor: '#00000050', // Semi-transparent background
+        padding: 8,
+        borderRadius: 25,
+    },
+    cardContent: {
+        padding: 15,
+    },
+    hotelName: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#333',
+    },
+    hotelDescription: {
+        fontSize: 14,
+        color: '#666',
+        marginVertical: 5,
+    },
+    footer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    rating: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFA500',
+    },
+    price: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FF6347',
+    },
 });
 
 export default HomeScreen;

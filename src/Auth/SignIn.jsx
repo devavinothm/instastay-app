@@ -19,9 +19,9 @@ const SignIn = () => {
             await signInWithEmailAndPassword(auth, email, password);
             
             // Navigate to the Home Screen
-            // navigation.navigate('TabNavigation');
+            navigation.navigate('TabNavigation');
 
-            alert('Signed in successfully!');
+            // alert('Signed in successfully!');
         } catch (error) {
             console.error(error);
         }
